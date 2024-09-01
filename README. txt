@@ -1,0 +1,31 @@
+# Number Guess Game
+React-native-Core-Components: https://reactnative.dev/docs/components-and-apis
+lesson: https://github.com/academind/react-native-practical-guide-code/tree/05-adaptive-uis/code/06-platform-specific-code
+
+
+### box shadow:
+- android: elevation:
+- iso: shadowColor: , shadowOpacity: , shadowOffset:, shadowRadius:
+
+
+### Margin
+For same amount space
+- marginVertical:  top and bottom
+- marginHorizontal: left and right
+
+### `Pressable` instated of `Touchable` recommended.
+
+### android button wave effect
+android_ripple={{color: }}
+view container need to be outside as a container.
+
+
+### array of styles:
+anything pressable, we can use [] of styles in it.
+
+### keep the button size same we can use view container for every button separately.
+and give style . flex: 1
+flex: 1 , how does it work?
+- if it is row - then whole space from width.
+- if it is column - then whole space from height.
+- if there is two elements in the container then these will share the space.
