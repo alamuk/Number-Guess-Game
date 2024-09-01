@@ -9,8 +9,8 @@ lesson: https://github.com/academind/react-native-practical-guide-code/tree/05-a
 
 
 ### Margin
-For same amount space
-- marginVertical:  top and bottom
+For the same amount space
+- marginVertical: top and bottom
 - marginHorizontal: left and right
 
 ### `Pressable` instated of `Touchable` recommended.
@@ -24,14 +24,15 @@ view container need to be outside as a container.
 anything pressable, we can use [] of styles in it.
 
 ### keep the button size same we can use view container for every button separately.
-and give style . flex: 1
-flex: 1 , how does it work?
-- if it is row - then whole space from width.
-- if it is column - then whole space from height.
-- if there is two elements in the container then these will share the space.
+and give style.
+flex: one
+flex: 1, how does it work?
+- if it is a row - then whole space from width.
+- if it is a column - then whole space from height.
+- if there are two elements in the container, then these will share the space.
 
 
-### View = only take space as much as its content needs. = must remember.
+### View = only takes space as much as its content needs. = must remember.
 for whole screens = we can use flex: 1
 
 
@@ -39,16 +40,16 @@ for whole screens = we can use flex: 1
 
 https://docs.expo.dev/versions/latest/sdk/linear-gradient/
 
-we will use = expo install instead of npm install
-because it will install fitting version for our project.
+we will use = expo install instead of ``npm install``
+because it will install a fitting version for our project.
 ~ npx expo install expo-linear-gradient
 
 
-image from : Unsplash
+image from: Unsplash
 
 ## parseInt() = convert the string to a number.
 ## isNaN() = its find out - is it a number or not = true or false.
 ### Alert Api
- // Alert.alert('Title', 'message', [configure the button]);
+ // Alert.alert('Title,' 'message,' [configure the button]);
 
- ### SafeAreaView: use for keep away from -Notch
+ ### SafeAreaView: use for keep away from — Notch
