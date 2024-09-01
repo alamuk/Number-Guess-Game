@@ -29,3 +29,26 @@ flex: 1 , how does it work?
 - if it is row - then whole space from width.
 - if it is column - then whole space from height.
 - if there is two elements in the container then these will share the space.
+
+
+### View = only take space as much as its content needs. = must remember.
+for whole screens = we can use flex: 1
+
+
+### linear gradient = we will use = expo
+
+https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+
+we will use = expo install instead of npm install
+because it will install fitting version for our project.
+~ npx expo install expo-linear-gradient
+
+
+image from : Unsplash
+
+## parseInt() = convert the string to a number.
+## isNaN() = its find out - is it a number or not = true or false.
+### Alert Api
+ // Alert.alert('Title', 'message', [configure the button]);
+
+ ### SafeAreaView: use for keep away from -Notch
