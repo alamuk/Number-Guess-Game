@@ -1,6 +1,6 @@
 # Number Guess Game
-React-native-Core-Components: https://reactnative.dev/docs/components-and-apis
-lesson: https://github.com/academind/react-native-practical-guide-code/tree/05-adaptive-uis/code/06-platform-specific-code
+[React-native-Core-Components:](https://reactnative.dev/docs/components-and-apis)
+[lesson:](https://github.com/academind/react-native-practical-guide-code/tree/05-adaptive-uis/code/06-platform-specific-code)
 
 
 ### box shadow:
@@ -38,7 +38,7 @@ for whole screens = we can use flex: 1
 
 ### linear gradient = we will use = expo
 
-https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+[EXPO Gradient](https://docs.expo.dev/versions/latest/sdk/linear-gradient/)
 
 we will use = expo install instead of ``npm install``
 because it will install a fitting version for our project.
@@ -47,9 +47,9 @@ because it will install a fitting version for our project.
 
 image from: Unsplash
 
-## parseInt() = convert the string to a number.
-## isNaN() = its find out - is it a number or not = true or false.
-### Alert Api
+#### parseInt() = convert the string to a number.
+#### isNaN() = its find out - is it a number or not = true or false.
+#### Alert Api
  // Alert.alert('Title,' 'message,' [configure the button]);
 
- ### SafeAreaView: use for keep away from — Notch
+#### SafeAreaView: use for keep away from — Notch
