@@ -116,6 +116,9 @@ we will use an extra Text component around the word which we want to highlight.
 
 Text inside the Text gets the font size from the parent Text component.
 
+### Map for list item
+{guessRounds.map((guessRound) => (<Text key={guessRound}>{guessRound}</Text>))}
+
 
 ### FlatList
 ``<FlatList

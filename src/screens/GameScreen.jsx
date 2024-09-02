@@ -73,9 +73,8 @@ function GameScreen({ userNumber, onGameOver }) {
 
   const guessRoundListLength = guessRounds.length;
 
-  return (
-    <View style={styles.screenContainer}>
-      <Title>Opponent's Guess </Title>
+  let content = (
+    <>
       <NumberContainer> {currentGuess}</NumberContainer>
       <Card>
         <InstructionText style={styles.instructionTextStyleProp}>
@@ -94,9 +93,36 @@ function GameScreen({ userNumber, onGameOver }) {
           </View>
         </View>
       </Card>
-      <View style={styles.listContainer}>
-        {/*{guessRounds.map((guessRound) => (<Text key={guessRound}>{guessRound}</Text>))}*/}
+    </>
+  );
 
+  if (width > 500) {
+    content = (
+      <>
+        <View style={styles.buttonsContainerWide}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+              <Ionicons name="remove" size={22} color="white" />
+            </PrimaryButton>
+          </View>
+
+          <NumberContainer> {currentGuess}</NumberContainer>
+
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+              <Ionicons name="add" size={22} color="white" />
+            </PrimaryButton>
+          </View>
+        </View>
+      </>
+    );
+  }
+
+  return (
+    <View style={styles.screenContainer}>
+      <Title>Opponent's Guess </Title>
+      {content}
+      <View style={styles.listContainer}>
         <FlatList
           data={guessRounds}
           renderItem={(itemData) => (
@@ -125,6 +151,10 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: 'row',
+  },
+  buttonsContainerWide: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   buttonContainer: {
     flex: 1,
