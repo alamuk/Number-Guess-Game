@@ -1,21 +1,70 @@
 import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
-import StartGame from './src/screens/StartGame';
+import StartGameScreen from './src/screens/StartGameScreen';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GameScreen from './src/screens/GameScreen';
 import Colors from './src/constats/Colors';
+import GameOverScreen from './src/screens/GameOverScreen';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
+  const [gameOver, setGameOver] = useState(true);
+  const [guessRounds, setGuessRounds] = useState(0);
 
-  function pickedNumberHandler(pickedNumber) {
-    setUserNumber(pickedNumber);
+  //---------------
+
+  const [fontLoaded] = useFonts({
+    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  useEffect(() => {
+    async function prepare() {
+      await SplashScreen.preventAutoHideAsync();
+    }
+    prepare();
+  }, []);
+
+  if (!fontLoaded) {
+    return null;
+  } else {
+    SplashScreen.hideAsync();
   }
 
-  let screen = <StartGame onPickNumber={pickedNumberHandler} />;
+  //---------------
+  function pickedNumberHandler(pickedNumber) {
+    setUserNumber(pickedNumber);
+    setGameOver(false);
+  }
+
+  function handleGameOver(numberOfRound) {
+    setGameOver(true);
+    setGuessRounds(numberOfRound);
+  }
+
+  function startNewGameHandler() {
+    setUserNumber(null);
+    setGuessRounds(0);
+  }
+
+  //---------------
+
+  let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
-    screen = <GameScreen />;
+    screen = <GameScreen userNumber={userNumber} onGameOver={handleGameOver} />;
+  }
+
+  if (gameOver && userNumber) {
+    screen = (
+      <GameOverScreen
+        roundsNumber={guessRounds}
+        userNumber={userNumber}
+        onStartNewGame={startNewGameHandler}
+      />
+    );
   }
 
   return (
