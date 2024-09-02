@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, Alert, FlatList } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Alert,
+  FlatList,
+  useWindowDimensions,
+  Dimensions,
+} from 'react-native';
 import { useState, useEffect } from 'react';
 
 import NumberContainer from '../components/game/NumberContainer';
@@ -26,6 +33,7 @@ function GameScreen({ userNumber, onGameOver }) {
   const initialGuess = getRandomNumberBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [guessRounds, setGuessRounds] = useState([initialGuess]);
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -110,6 +118,7 @@ const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
     padding: 50,
+    alignItems: 'center',
   },
   instructionTextStyleProp: {
     marginBottom: 12,

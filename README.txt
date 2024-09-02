@@ -118,15 +118,125 @@ Text inside the Text gets the font size from the parent Text component.
 
 
 ### FlatList
-  <FlatList
-          data={guessRounds}
-          renderItem={(itemData) => <Text key={itemData.item.value}>{itemData.item.value}</Text>}
-           keyExtractor={(item) => item}
-        />
+``<FlatList
+data={guessRounds}
+renderItem={(itemData) => <Text key={itemData.item.value}>{itemData.item.value}</Text>}
+keyExtractor={(item) => item}/>``
 
 
-        <FlatList
-          data={guessRounds}
-          renderItem={(itemData) => <Text key={itemData.item}>{itemData.item}</Text>}
-           keyExtractor={(item) => item}
-        />
+``<FlatList
+data={guessRounds}
+renderItem={(itemData) => <Text key={itemData.item}>{itemData.item}</Text>}
+keyExtractor={(item) => item}/>``
+
+
+
+## Designing and tailoring the user interface for various platforms and devices.
+1. Execute Platform-specific code
+2. Adjust different Device Sizes
+3. Building Adaptive Components
+
+Note: this affects spaces so:
+- this will work with
+1. margin
+2. padding
+3. fontSize
+4. borderRadius
+
+### width and height with % and width value
+`maxWidth: '80%'
+width: 300`
+// we will take 300px only if there is enough space. otherwise it will be max 80% of the available space.
+// this measurement will always be with the parent container that holds the elements.
+
+
+### Dimension api
+this works with only width or height
+it comes with get() and it includes string either screen or window
+- window excludes the status bar / screen includes the status bar.
+``cosnt deviceWidth = Dimensions.get('window').``
+
+we use this with if condition or ternary operator.
+`padding: deviceWidth < 450 ? 12 : 24`
+
+
+### For Image: Dimensions Api
+
+hard coded of the image width is not good idea. because we dont know which in device app will be running.
+like:
+` imageContainer: {
+     width: '300',
+     height: '300',
+   },
+   image: {
+       width: '100%',
+       height: '100%',
+     },
+`
+
+if it is says:
+width: '50%',
+height: '50%',
+here amounts are same but actually there are different in values. so % value is the good option here.
+so need to use had coded value here with dimension api.
+
+Better use:
+` imageContainer: {
+width: deviceWidth < 380 ? 150 : 300,
+height: deviceWidth < 380 ? 150 : 300,
+borderRadius: deviceWidth < 380 ? 75 : 150,
+   },
+   image: {
+       width: '100%',
+       height: '100%',
+     },
+`
+
+
+## Rotating App
+
+- change in the App.json
+ `"orientation": "default"`,
+   instead of`"orientation": "portrait",`
+
+   change the Orientation: to default. then the app will rotate.
+
+   any code for device orientation should go in to the component function,
+   otherwise it will only once the comparison first starts after that it will not work.
+
+   in that case, we always use `useWindowDimension` hook for orientation not the dimension.
+   `const {width, height} = useWindowDimension()`
+
+  - this hook will watch the dimension when the device is rotated.
+    `const {width, height} = useWindowDimension()
+    const marginTopDistance = height < 380 ? 30 : 100;`
+
+    ` style={[styles.rootContainer, { marginTop: marginTopDistance }]}`
+
+
+    ### KeyboardAvoidingView
+    this will help to up the content when keyboard in the screen for landscape
+    need to wrap all the content in side the component JSX
+    also need to wrap ScrollView on the top.
+
+
+`
+ <ScrollView style={styles.screen}>
+      <KeyboardAvoidingView style={styles.screen} behavior="position">
+
+      < Other jsx>
+
+      </KeyboardAvoidingView>
+</ScrollView>
+`
+
+
+``const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
+
+  ``
+
+
+  ## Making different UI for landscape mode
