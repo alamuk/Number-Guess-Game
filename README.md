@@ -141,23 +141,23 @@ keyExtractor={(item) => item}/>``
 
 Note: this affects spaces so:
 - this will work with
-1. margin
-2. padding
+1. Margin
+2. Padding
 3. fontSize
 4. borderRadius
 
 ### width and height with % and width value
 `maxWidth: '80%'
 width: 300`
-// we will take 300px only if there is enough space. otherwise it will be max 80% of the available space.
+// we will take 300px only if there is enough space. otherwise, it will be max 80% of the available space.
 // this measurement will always be with the parent container that holds the elements.
 
 
-### Dimension api
+### Dimension api. 
 this works with only width or height
 it comes with get() and it includes string either screen or window
 - window excludes the status bar / screen includes the status bar.
-``cosnt deviceWidth = Dimensions.get('window').``
+``const deviceWidth = Dimensions.get('window').``
 
 we use this with if condition or ternary operator.
 `padding: deviceWidth < 450 ? 12 : 24`
@@ -165,7 +165,7 @@ we use this with if condition or ternary operator.
 
 ### For Image: Dimensions Api
 
-hard coded of the image width is not good idea. because we dont know which in device app will be running.
+hard coded of the image width is not a good idea. because we don't know which in device app will be running.
 like:
 ` imageContainer: {
      width: '300',
@@ -181,12 +181,12 @@ if it is says:
 width: '50%',
 height: '50%',
 here amounts are same but actually there are different in values. so % value is the good option here.
-so need to use had coded value here with dimension api.
+so we need to use had coded value here with dimension api.
 
 Better use:
 ` imageContainer: {
 width: deviceWidth < 380 ? 150 : 300,
-height: deviceWidth < 380 ? 150 : 300,
+height: deviceWidth < 380? 150 : 300,
 borderRadius: deviceWidth < 380 ? 75 : 150,
    },
    image: {
@@ -200,7 +200,7 @@ borderRadius: deviceWidth < 380 ? 75 : 150,
 
 - change in the App.json
  `"orientation": "default"`,
-   instead of`"orientation": "portrait",`
+   instead of`"orientation": "portrait,"`
 
    change the Orientation: to default. then the app will rotate.
 
@@ -212,14 +212,14 @@ borderRadius: deviceWidth < 380 ? 75 : 150,
 
   - this hook will watch the dimension when the device is rotated.
     `const {width, height} = useWindowDimension()
-    const marginTopDistance = height < 380 ? 30 : 100;`
+    const marginTopDistance = height < 380? 30 : 100;`
 
     ` style={[styles.rootContainer, { marginTop: marginTopDistance }]}`
 
 
     ### KeyboardAvoidingView
-    this will help to up the content when keyboard in the screen for landscape
-    need to wrap all the content in side the component JSX
+    this will help to up the content when the keyboard in the screen for landscape
+ needs to wrap all the content inside the component JSX
     also need to wrap ScrollView on the top.
 
 
