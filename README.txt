@@ -239,7 +239,45 @@ borderRadius: deviceWidth < 380 ? 75 : 150,
     flex: 1,
   },
 
-  ``
+``
+
+  ## Making UI for image in landscape mode
+```
+ const { width, height } = useWindowDimensions();
+
+  let imageSize = 300;
+
+  if (width < 380) {
+    imageSize = 150;
+  }
+
+  if (height < 400) {
+    imageSize = 80;
+  }
+
+  const imageStyle = {
+    width: imageSize,
+    height: imageSize,
+    borderRadius: imageSize / 2,
+  };
+
+  ```
 
 
-  ## Making different UI for landscape mode
+  ## platform Api
+    // borderWidth: 2,
+   // borderWidth: Platform.OS === 'ios' ? 2 : 1,
+
+   The Best way to use Platform:
+    ``borderWidth: Platform.select({ ios: 0, android: 2 }),``
+
+
+    we also can write a Platform specific file.
+    for example:
+    Title.ios.js
+    Title.android.js
+
+
+    ### expo status bar
+
+platform specific
